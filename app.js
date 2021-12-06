@@ -5,7 +5,7 @@ const cors = require("cors");
 // const express_render = require("./renders");
 // const express_router = require("./routers");
 // const mongoose = require("mongoose");
-// require("dotenv").config();
+// require("dotenv").config(); git test
 
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
