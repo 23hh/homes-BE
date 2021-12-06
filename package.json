@@ -1,0 +1,35 @@
+{
+  "name": "homes-be",
+  "version": "1.0.0",
+  "description": "워크스테이션 : https://www.notion.so/show-me-homes/3-09d2ce7133a249b18e96397816ecb82c<br>\r 노션 뷰 : https://show-me-homes.notion.site/show-me-homes/3-09d2ce7133a249b18e96397816ecb82c <br>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KIMHYEONGJIN5925/homes-BE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KIMHYEONGJIN5925/homes-BE/issues"
+  },
+  "homepage": "https://github.com/KIMHYEONGJIN5925/homes-BE#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "joi": "^17.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.14",
+    "mongoose-sequence": "^5.3.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.12.0-beta.1"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.3.0"
+  }
+}
