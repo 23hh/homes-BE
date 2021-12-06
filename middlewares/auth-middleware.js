@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("../schemas/user");
+const User = require("../models/users");
 
 module.exports = (req, res, next) => {
   console.log("미들웨어를 지나가유");
