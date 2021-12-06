@@ -19,8 +19,12 @@
   "homepage": "https://github.com/KIMHYEONGJIN5925/homes-BE#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.14",
+    "mongoose-sequence": "^5.3.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.12.0-beta.1"

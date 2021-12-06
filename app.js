@@ -2,6 +2,22 @@ const express = require("express");
 const app = express();
 const port = 8080;
 const cors = require("cors");
+// const express_render = require("./renders");
+// const express_router = require("./routers");
+// const mongoose = require("mongoose");
+// require("dotenv").config();
+
+app.set("views", __dirname + "/views");
+app.set("view engine", "ejs");
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+// app.use("/", express_render); //Render 폴더 적용
+// app.use("/api", express_router); //Router 폴더 적용
+
+const connect = require("./models");
+connect();
 
 /*
 const whitelist = ["http://localhost:8080"];
