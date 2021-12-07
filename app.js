@@ -4,7 +4,7 @@ const port = 8080;
 
 const cors = require("cors");
 const userRouter = require("./routers/users");
-// const express_render = require("./renders");
+const express_render = require("./renders");
 // const express_router = require("./routers");
 // const mongoose = require("mongoose");
 // require("dotenv").config(); git test
@@ -15,7 +15,7 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "ejs"); // 템플릿엔진 ejs를 이 웹의 뷰엔진으로 사용하겠다.
 app.use("/api", userRouter);
 
-// app.use("/", express_render); //Render 폴더 적용
+app.use("/", express_render); //Render 폴더 적용
 // app.use("/api", express_router); //Router 폴더 적용
 
 const connect = require("./models");
