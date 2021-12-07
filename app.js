@@ -47,7 +47,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 // const indexRouter = require('./routes/index');
 
-router.get("/", (req, res, next) => {
+app.get("/", (req, res, next) => {
   try {
     res.render("index");
   } catch (error) {
@@ -55,7 +55,7 @@ router.get("/", (req, res, next) => {
   }
 });
 
-router.get("/login", (req, res, next) => {
+app.get("/login", (req, res, next) => {
   try {
     res.render("login");
   } catch (error) {
@@ -63,14 +63,14 @@ router.get("/login", (req, res, next) => {
   }
 });
 
-router.get("/sign_up", (req, res, next) => {
+app.get("/sign_up", (req, res, next) => {
   try {
     res.render("sign_up");
   } catch (error) {
     res.render("error");
   }
 });
-router.get("/create", (req, res, next) => {
+app.get("/create", (req, res, next) => {
   try {
     res.render("create");
   } catch (error) {
@@ -78,7 +78,7 @@ router.get("/create", (req, res, next) => {
   }
 });
 
-router.get("/detail", (req, res, next) => {
+app.get("/detail", (req, res, next) => {
   try {
     res.render("detail");
   } catch (error) {
@@ -86,7 +86,7 @@ router.get("/detail", (req, res, next) => {
   }
 });
 
-router.get("/update", (req, res, next) => {
+app.get("/update", (req, res, next) => {
   try {
     res.render("update");
   } catch (error) {
