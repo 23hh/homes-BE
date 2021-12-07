@@ -1,11 +1,11 @@
 const express = require("express");
-const User = require("../models/users"); // 스키마에서 모델을 가져옴
+const Users = require("../models/users"); // 스키마에서 모델을 가져옴
 const router = express.Router();
 
 router.post("/sign-up", async (req, res) => {
   try {
     const { id, password, nickname } = req.body;
-    const user = new User({ id, password, nickname });
+    const user = new Users({ id, password, nickname });
     console.log("회원가입 지나가유");
     await user.save(); // 사용자 저장하기
     res.status(201).send({});
