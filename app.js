@@ -55,9 +55,9 @@ app.get("/", (req, res, next) => {
   }
 });
 
-app.get("/login", (req, res, next) => {
+app.get("/sign_in", (req, res, next) => {
   try {
-    res.render("login");
+    res.render("sign_in");
   } catch (error) {
     res.render("error");
   }

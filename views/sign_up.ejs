@@ -4,29 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous"
-    ></script>
-    <title>회원가입페이지</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <title>회원가입 페이지</title>
     <script>
       function sign_up() {
-        console.log($("#id").val())
-        const id = $("#id").val();
-        const password = $("#password").val();
-        const nickname = $("#nickname").val();
         $.ajax({
           type: "POST",
           url: "/api/sign-up",
           data: {
-            id: id,
-            password: password,
-            nickname: nickname,
+            id: $("#id").val(),
+            password: $("#password").val(),
+            password_confirm: $("#password_confirm").val(),
+            nickname: $("#nickname").val(),
           },
-          success: function (response) {
-            alert("회원가입 good");
-            window.location.href = "/login";
+          success: function (response) { // sucess 처리
+            alert("후~ 회원가입은 성공이로군");
+            window.location.href = "/sign_in";
+          },
+          error: function (error) { // error 처리
+            alert(error.responseJSON.errorMessage);
           },
         });
       }
@@ -35,10 +31,12 @@
   <body>
     <p>아이디</p>
     <input type="text" id="id"></input>
-    <p>비번</p>
+    <p>비밀번호</p>
     <input type="password" id="password"></input>
+    <p>비밀번호 재확인</p>
+    <input type="password" id="password_confirm"></input>
     <p>닉네임</p>
-    <input type="nickname" id="nickname"></input>
-    <button onclick="sign_up()"></button>
+    <input type="nickname" id="nickname"></input> <br><br>
+    <button onclick="sign_up()">회원가입</button>
   </body>
 </html>
