@@ -17,9 +17,9 @@ router.get("/", (req, res, next) => {
     }
   });
   
-  router.get("/sign-up", (req, res, next) => {
+  router.get("/sign_up", (req, res, next) => {
     try {
-      res.render("sign-up");
+      res.render("sign_up");
     } catch (error) {
       res.render("error");
     }

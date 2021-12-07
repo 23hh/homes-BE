@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-const AutoIncrement = require("mongoose-sequence")(mongoose); // commentId sequence 처리
+const AutoIncrement = require("mongoose-sequence")(mongoose); // postId sequence 처리
 
 const { Schema } = mongoose;
 
-const boardSchema = new Schema({
-  boardId: {
+const postSchema = new Schema({
+  postId: {
     type: Number,
     required: true,
   },
@@ -32,12 +32,12 @@ const boardSchema = new Schema({
     type: String,
     required: true,
   },
-  boardUrl: {
+  imgUrl: {
     type: String,
     required: true,
   },
 });
 
-boardSchema.plugin(AutoIncrement, { inc_field: "boardId" });
+postSchema.plugin(AutoIncrement, { inc_field: "postId" });
 
-module.exports = mongoose.model("Boards", boardSchema); // 이 모델을 라우터에서 사용한다?
+module.exports = mongoose.model("Posts", postSchema); // 이 모델을 라우터에서 사용한다?

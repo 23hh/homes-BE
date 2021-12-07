@@ -2,7 +2,7 @@ const express = require("express");
 const User = require("../models/users"); // 스키마에서 모델을 가져옴
 const router = express.Router();
 
-router.post("/sign_up", async (req, res) => {
+router.post("/sign-up", async (req, res) => {
   try {
     const { id, password, nickname } = req.body;
     const user = new User({ id, password, nickname });
