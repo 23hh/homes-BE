@@ -12,7 +12,6 @@ module.exports = (req, res, next) => {
     });
     return;
   }
-
   try {
     const { userId } = jwt.verify(tokenValue, "my-secret-key");
     User.findById(userId)
