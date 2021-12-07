@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <script>
+      function sign_up() {
+        console.log($("#id").val())
+        const id = $("#id").val();
+        const password = $("#password").val();
+        const nickname = $("#nickname").val();
+        $.ajax({
+          type: "POST",
+          url: "/api/sign_up",
+          data: {
+            id: id,
+            password: password,
+            nickname: nickname,
+          },
+          success: function (response) {
+            alert("회원가입 good");
+            window.location.href = "/";
+          },
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <p>아이디</p>
+    <input type="text" id="id"></input>
+    <p>비번</p>
+    <input type="password" id="password"></input>
+    <p>닉네임</p>
+    <input type="nickname" id="nickname"></input>
+    <button onclick="sign_up()"></button>
+  </body>
+</html>

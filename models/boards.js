@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const AutoIncrement = require("mongoose-sequence")(mongoose); // commentId sequence 처리
 
 const { Schema } = mongoose;
+
 const boardSchema = new Schema({
   boardId: {
     type: Number,
@@ -28,6 +29,10 @@ const boardSchema = new Schema({
     required: true,
   },
   content: {
+    type: String,
+    required: true,
+  },
+  boardUrl: {
     type: String,
     required: true,
   },
