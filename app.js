@@ -6,8 +6,9 @@ const cors = require("cors");
 const userRouter = require("./routers/users");
 // const express_render = require("./renders");
 // const express_router = require("./routers");
-// require("dotenv").config();
-
+// const mongoose = require("mongoose");
+// require("dotenv").config(); git test
+// conflict 발생하여 수정 진행
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.set("views", __dirname + "/views");
