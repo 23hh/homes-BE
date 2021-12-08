@@ -17,7 +17,9 @@
           password: $("#password").val(),          
         },
         success: function (response) { // sucess 처리
+
           alert("오호~ 로그인까지 성공하다니?!이거 정말 놀라운걸..?");
+
           localStorage.setItem("token", response.token);
           window.location.href = "/";
         },
@@ -36,4 +38,6 @@
     <input type="password" id="password"></input>
     <button onclick="sign_in()">로그인</button>
   </body>
+
 </html>
+

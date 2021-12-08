@@ -8,7 +8,9 @@ const authMiddleware = require("../middlewares/auth-middleware"); // 미들웨�
 router.post("/sign-up", async (req, res) => {
   try {
     const { id, password, password_confirm, nickname } = req.body;
+
     console.log(id, password, password_confirm, nickname);
+
 
     // 아이디는 `최소 3자 이상, 알파벳 대소문자(a~z, A~Z), 숫자(0~9)`로 구성
     let chkId = id.search(/^[A-za-z0-9]{3,15}$/g);
@@ -37,8 +39,10 @@ router.post("/sign-up", async (req, res) => {
     if (password.length < 4 || chkPw.includes(substring)) {
       // console.log("패스워드 형식을 스쳐지나간다")
       res.status(400).send({
+
         errorMessage:
           "패스워드는 최소 4자 이상이며, 닉네임과 같은 값은 포함될 수 없습니다.",
+
       });
       return;
     }
@@ -60,6 +64,7 @@ router.post("/sign-up", async (req, res) => {
     res.status(201).send({ result: "success" });
 
     return;
+
   } catch (err) {
     console.log(err);
     res.status(400).send({
@@ -68,6 +73,7 @@ router.post("/sign-up", async (req, res) => {
     return;
   }
 });
+
 
 // 로그인
 router.post("/sign-in", async (req, res) => {
@@ -83,11 +89,10 @@ router.post("/sign-in", async (req, res) => {
       return;
     }
     // users 정보 일치 (users가 없을 경우 본 코드까지 안넘어옴)
-    const token = jwt.sign({ userId: users.userId }, "my-secret-key"); // sign 성공 시 token 생성
+    const token = jwt.sign({ userId: users.userId }, "my-secret-key"); // sign 성공 시 token 생성   
 
     res.send({
-      token,
-      result: "success",
+      token, result: "success"
     });
   } catch (err) {
     console.log(err);
@@ -98,11 +103,10 @@ router.post("/sign-in", async (req, res) => {
 });
 
 // token 정보조회 -> 이 부분 API URL Front분들이랑 확인해야함
-router.get("/users/me", authMiddleware, async (req, res) => {
-  // 해당 경로로 들어오는 경우에만 authMiddleware 붙음
+router.get("/users/me", authMiddleware, async (req, res) => { // 해당 경로로 들어오는 경우에만 authMiddleware 붙음
   const { users } = res.locals;
-  console.log(users);
-  res.send({ users });
+  console.log(users)
+  res.send({users,});
 });
 
 module.exports = router;

@@ -16,11 +16,13 @@ module.exports = (req, res, next) => {
 
   try {
     const { userId } = jwt.verify(tokenValue, "my-secret-key");
-    Users.findOne({ userId }).then((users) => {
-      res.locals.users = users;
-      console.log("미들웨어 내부: " + users);
-      next();
-    });
+
+    Users.findOne({userId})
+      .then((users) => {
+        res.locals.users = users;
+        console.log("미들웨어 내부: " + users);
+        next();
+      });
   } catch (error) {
     res.status(401).send({
       errorMessage: "로그인 후 사용하세요",
