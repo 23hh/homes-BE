@@ -4,10 +4,10 @@ const AutoIncrement = require("mongoose-sequence")(mongoose); // postId sequence
 const { Schema } = mongoose;
 
 const postSchema = new Schema({
-  postId: {
-    type: Number,
-    required: true,
-  },
+  // postId: {
+  //   type: Number,
+  //   required: true,
+  // },
   userId: {
     type: Number,
     required: true,
@@ -32,7 +32,7 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
-  imgUrl: {
+  img_url: {
     type: String,
     required: true,
   },

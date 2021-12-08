@@ -19,7 +19,7 @@ module.exports = (req, res, next) => {
     Users.findOne({userId})
       .then((users) => {
         res.locals.users = users;
-        console.log("미들웨어 내부: " + users);
+        // console.log("미들웨어 내부: " + users);
         next();
       });
   } catch (error) {
