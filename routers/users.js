@@ -9,8 +9,6 @@ router.post("/sign-up", async (req, res) => {
   try {
     const { id, password, password_confirm, nickname } = req.body;
 
-    console.log(id, password, password_confirm, nickname);
-
 
     // 아이디는 `최소 3자 이상, 알파벳 대소문자(a~z, A~Z), 숫자(0~9)`로 구성
     let chkId = id.search(/^[A-za-z0-9]{3,15}$/g);
@@ -90,6 +88,7 @@ router.post("/sign-in", async (req, res) => {
     }
     // users 정보 일치 (users가 없을 경우 본 코드까지 안넘어옴)
     const token = jwt.sign({ userId: users.userId }, "my-secret-key"); // sign 성공 시 token 생성   
+    console.log(token)
 
     res.send({
       token, result: "success"
@@ -105,7 +104,6 @@ router.post("/sign-in", async (req, res) => {
 // token 정보조회 -> 이 부분 API URL Front분들이랑 확인해야함
 router.get("/users/me", authMiddleware, async (req, res) => { // 해당 경로로 들어오는 경우에만 authMiddleware 붙음
   const { users } = res.locals;
-  console.log(users)
   res.send({users,});
 });
 

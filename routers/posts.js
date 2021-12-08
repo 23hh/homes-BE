@@ -1,6 +1,5 @@
 const express = require("express");
 const Posts = require("../models/posts"); // 스키마에서 모델을 가져옴
-const Comments = require("../models/comments");
 const authMiddleware = require("../middlewares/auth-middleware");
 const router = express.Router();
 
@@ -34,7 +33,6 @@ router.get("/posts/:postId", async (req, res, next) => {
   try {
     const { postId } = req.params;
     const post = await Posts.findOne({ postId }).exec();
-    console.log(port);
     res.json({ post });
   } catch (error) {
     res.render("error");
@@ -45,6 +43,7 @@ router.get("/posts/:postId", async (req, res, next) => {
 router.put("/posts/:postId", authMiddleware, async (req, res) => {
   const { postId } = req.params;
   const { title, content, area, img_url } = req.body;
+
   const isIdInBoard = await Posts.find({ postId });
   if (isIdInBoard.length > 0) {
     await Posts.updateOne(
@@ -58,10 +57,12 @@ router.put("/posts/:postId", authMiddleware, async (req, res) => {
 //게시글 삭제
 router.delete("/posts/:postId", authMiddleware, async (req, res) => {
   const { postId } = req.params;
+
   const isIdInBoard = await Posts.find({ postId });
   if (isIdInBoard.length > 0) {
     await Posts.deleteOne({ postId });
   }
   res.send({ result: "success" });
 });
+
 module.exports = router;
