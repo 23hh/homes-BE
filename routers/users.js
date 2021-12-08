@@ -7,8 +7,7 @@ const authMiddleware = require("../middlewares/auth-middleware"); // 미들웨�
 // 회원가입
 router.post("/sign-up", async (req, res) => {
   try {
-    const { id, password, password_confirm, nickname } = req.body;
-
+    const { id, password, nickname } = req.body;
 
     // 아이디는 `최소 3자 이상, 알파벳 대소문자(a~z, A~Z), 숫자(0~9)`로 구성
     let chkId = id.search(/^[A-za-z0-9]{3,15}$/g);
@@ -33,22 +32,12 @@ router.post("/sign-up", async (req, res) => {
 
     // 비밀번호는 `최소 4자 이상이며, 닉네임과 같은 값이 포함된 경우 회원가입에 실패`로 만들기
     let chkPw = password;
-    substring = nickname;
+    substring = id;
     if (password.length < 4 || chkPw.includes(substring)) {
       // console.log("패스워드 형식을 스쳐지나간다")
       res.status(400).send({
-
         errorMessage:
-          "패스워드는 최소 4자 이상이며, 닉네임과 같은 값은 포함될 수 없습니다.",
-
-      });
-      return;
-    }
-
-    // 패스워드 불일치(비밀번호 입력, 비밀번호 재확인 input)
-    if (password !== password_confirm) {
-      res.status(400).send({
-        errorMessage: "패스워드가 패스워드 확인란과 동일하지 않습니다.",
+          "패스워드는 최소 4자 이상이며, 아이디와 같은 값은 포함될 수 없습니다.",
       });
       return;
     }
@@ -62,7 +51,6 @@ router.post("/sign-up", async (req, res) => {
     res.status(201).send({ result: "success" });
 
     return;
-
   } catch (err) {
     console.log(err);
     res.status(400).send({
@@ -71,7 +59,6 @@ router.post("/sign-up", async (req, res) => {
     return;
   }
 });
-
 
 // 로그인
 router.post("/sign-in", async (req, res) => {
@@ -82,16 +69,17 @@ router.post("/sign-in", async (req, res) => {
     // user 정보 불일치
     if (!users) {
       res.status(400).send({
-        errorMessage: "닉네임 또는 패스워드가 잘못됐습니다.",
+        errorMessage: "아이디 또는 패스워드가 잘못됐습니다.",
       });
       return;
     }
     // users 정보 일치 (users가 없을 경우 본 코드까지 안넘어옴)
-    const token = jwt.sign({ userId: users.userId }, "my-secret-key"); // sign 성공 시 token 생성   
-    console.log(token)
+    const token = jwt.sign({ userId: users.userId }, "my-secret-key"); // sign 성공 시 token 생성
+    console.log(token);
 
     res.send({
-      token, result: "success"
+      token,
+      result: "success",
     });
   } catch (err) {
     console.log(err);
@@ -102,9 +90,10 @@ router.post("/sign-in", async (req, res) => {
 });
 
 // token 정보조회 -> 이 부분 API URL Front분들이랑 확인해야함
-router.get("/users/me", authMiddleware, async (req, res) => { // 해당 경로로 들어오는 경우에만 authMiddleware 붙음
+router.get("/users/me", authMiddleware, async (req, res) => {
+  // 해당 경로로 들어오는 경우에만 authMiddleware 붙음
   const { users } = res.locals;
-  res.send({users,});
+  res.send({ users });
 });
 
 module.exports = router;
