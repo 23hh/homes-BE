@@ -6,7 +6,6 @@ const { Schema } = mongoose;
 const postSchema = new Schema({
   postId: {
     type: Number,
-    required: true,
   },
   userId: {
     type: Number,
@@ -28,11 +27,15 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
+  area: {
+    type: String,
+    required: true,
+  },
   content: {
     type: String,
     required: true,
   },
-  imgUrl: {
+  img_url: {
     type: String,
     required: true,
   },

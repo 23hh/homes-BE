@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <title>로그인</title>
+    <script>  
+    // 로그인  
+    function sign_in() {
+      $.ajax({
+        type: "POST",
+        url: "/api/sign-in",
+        data: {
+          id: $("#id").val(),
+          password: $("#password").val(),          
+        },
+        success: function (response) { // sucess 처리
+          alert("오호~ 로그인까지 성공하다니?!이거 정말 놀라운걸..?");
+          localStorage.setItem("token", response.token);
+          window.location.href = "/";
+        },
+        error: function (error) { // error 처리
+          alert(error.responseJSON.errorMessage);
+        },
+      });
+    }
+    </script>
+  </head>
+  <body>
+    <h1>로그인</h1>
+    <p>아이디</p>
+    <input type="text" id="id"></input>
+    <p>비밀번호</p>
+    <input type="password" id="password"></input>
+    <button onclick="sign_in()">로그인</button>
+  </body>
+</html>

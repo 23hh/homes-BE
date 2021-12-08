@@ -4,7 +4,63 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
     <title>생성페이지</title>
+
+    <script>
+
+      function posting() {
+        const img_url = $('#img_url').val();
+        const title = $("#title").val();
+        const area = $("#area").val();
+        const content = $('#content').val();
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = ('0' + (today.getMonth() + 1)).slice(-2);
+        let day = ('0' + today.getDate()).slice(-2);
+        const date = year + '-' + month  + '-' + day;
+        $.ajax({
+          type: "POST",
+          url: '/api/posts',
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          data: {
+            img_url: img_url,
+            title: title,
+            area: area,
+            content: content,
+            date: date,
+          },
+          success: function(response) {
+            if (response["result"] == "success") {
+              alert('게시완료!');
+              window.location.href = "/";
+            }
+          }
+        });
+      }
+
+    </script>
   </head>
-  <body></body>
+  <body>
+    <p>imgUrl</p>
+    <input type="file" id="img_url"></input>
+    <p>제목</p>
+    <input type="text" id="title"></input>
+          <label for="area">지역구 선택</label>
+          <select name="area" id="area">
+            <option value="강남구">강남구</option>
+            <option value="강서구">강서구</option>
+            <option value="강북구">강북구</option>
+            <option value="강동구">강동구</option>
+          </select>
+    <p>내용</p>
+    <input type="text" id="content"></input>
+    <button onclick="posting()"></button>
+  </body>
 </html>
