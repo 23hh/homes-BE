@@ -7,7 +7,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <title>로그인</title>
     <script>  
-
     // 로그인  
     function sign_in() {
       $.ajax({
@@ -18,7 +17,9 @@
           password: $("#password").val(),          
         },
         success: function (response) { // sucess 처리
-          alert("오호~ 로그인까지 성공하다니?!");
+
+          alert("오호~ 로그인까지 성공하다니?!이거 정말 놀라운걸..?");
+
           localStorage.setItem("token", response.token);
           window.location.href = "/";
         },
@@ -37,4 +38,6 @@
     <input type="password" id="password"></input>
     <button onclick="sign_in()">로그인</button>
   </body>
+
 </html>
+

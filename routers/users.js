@@ -9,6 +9,7 @@ router.post("/sign-up", async (req, res) => {
   try {
     const { id, password, password_confirm, nickname } = req.body;
 
+
     // 아이디는 `최소 3자 이상, 알파벳 대소문자(a~z, A~Z), 숫자(0~9)`로 구성
     let chkId = id.search(/^[A-za-z0-9]{3,15}$/g);
     if (chkId === -1) {
@@ -36,7 +37,10 @@ router.post("/sign-up", async (req, res) => {
     if (password.length < 4 || chkPw.includes(substring)) {
       // console.log("패스워드 형식을 스쳐지나간다")
       res.status(400).send({
-        errorMessage: "패스워드는 최소 4자 이상이며, 닉네임과 같은 값은 포함될 수 없습니다.",
+
+        errorMessage:
+          "패스워드는 최소 4자 이상이며, 닉네임과 같은 값은 포함될 수 없습니다.",
+
       });
       return;
     }
@@ -67,6 +71,7 @@ router.post("/sign-up", async (req, res) => {
     return;
   }
 });
+
 
 // 로그인
 router.post("/sign-in", async (req, res) => {

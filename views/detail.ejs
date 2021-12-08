@@ -4,7 +4,56 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
     <title>상세페이지</title>
+    <script>
+      function get_Detail() {}
+    </script>
   </head>
-  <body></body>
+  <body>
+    <h1>게시글상세</h1>
+    <div id="boardDetail">
+      <table>
+        <tr>
+          <th>작성자</th>
+          <td id="inputName"></td>
+        </tr>
+        <tr>
+          <th>작성날짜</th>
+          <td id="inputDate"></td>
+        </tr>
+        <tr>
+          <th>제목</th>
+          <td id="inputTitle"></td>
+        </tr>
+        <tr>
+          <th>내용</th>
+          <td id="inputContent"></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <button
+        id="btnModify"
+        type="button"
+        class="btn btn-primary"
+        onclick="modifyPost()"
+        style="display: none"
+      >
+        수정 및 삭제
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        onclick="location.href='/home'"
+      >
+        홈으로 돌아가기
+      </button>
+    </div>
+    <h2>댓글목록</h2>
+  </body>
 </html>
