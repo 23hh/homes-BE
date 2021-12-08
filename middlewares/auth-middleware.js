@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
   const { authorization } = req.headers;
   const [tokenType, tokenValue] = authorization.split(" ");
   console.log(tokenValue);
-  
+
   if (tokenType !== "Bearer") {
     res.status(401).send({
       errorMessage: "로그인 후 사용하세요",
@@ -16,6 +16,7 @@ module.exports = (req, res, next) => {
 
   try {
     const { userId } = jwt.verify(tokenValue, "my-secret-key");
+
     Users.findOne({userId})
       .then((users) => {
         res.locals.users = users;

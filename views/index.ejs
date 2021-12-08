@@ -4,53 +4,115 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
     <title>메인페이지</title>
     <script>
-    // 화면 로딩되면 
-    $(document).ready(function () {
-      getSelf()
-    });
-
-  // 로그인 여부 확인 (접근 제한)
-  function getSelf() {
-      console.log("로그인 여부 확인")
-      $.ajax({
-        type: "GET",
-        url: "/api/users/me",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        success: function (response) {
-          //callback(response.users);
-          let users = response["users"];
-          $("#id").text(users["id"]);
-          sessionStorage.setItem("id", users["id"]);
-          //console.log(users);
-          let htmlTemp = `<div id="temp">
-                            <h1 id="id"> ${users["id"]} 당신... 회원가입과 로그인을 끝내고 여기까지 오다니, 대단하네</h1>
-                          </div>`
-           $("#temp").append(htmlTemp);
-        },
-        // error: function (error) { // 에러처리
-        //   alert(error.responseJSON.errorMessage);
-        //   window.location.href = "/sign_in";
-        // },      
+      // 화면 로딩되면
+      $(document).ready(function () {
+        getSelf();
+        get_posts();
       });
-    }
 
-    // 로그아웃
-    function logout() {
-      localStorage.clear();
-      alert("당신의 토큰은 제거되었네");
-      window.location.href = "/sign_in";
-    }
+      // 로그인 여부 확인 (접근 제한)
+      function getSelf() {
+        console.log("로그인 여부 확인");
+        $.ajax({
+          type: "GET",
+          url: "/api/users/me",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          success: function (response) {
+            //callback(response.users);
+            let users = response["users"];
+            $("#id").text(users["id"]);
+            sessionStorage.setItem("id", users["id"]);
+            //console.log(users);
+            let htmlTemp = `<div id="temp">
+                            <h1 id="id"> ${users["id"]} 당신... 회원가입과 로그인을 끝내고 여기까지 오다니, 대단하네</h1>
+                          </div>`;
+            $("#temp").append(htmlTemp);
+          },
+          // error: function (error) { // 에러처리
+          //   alert(error.responseJSON.errorMessage);
+          //   window.location.href = "/sign_in";
+          // },
+        });
+      }
+      // 로그아웃
+      function logout() {
+        localStorage.clear();
+        alert("나 배은지..당신의 토큰을 죽였다..");
+        window.location.href = "/sign_in";
+      }
+
+      function get_posts(postId) {
+        $("#postList").empty();
+        $.ajax({
+          type: "GET",
+          url: `/api/posts`,
+          data: {},
+          success: function (response) {
+            console.log(response);
+            let posts = response["posts"];
+            console.log(posts);
+            for (let i = 0; i < posts.length; i++) {
+              make_table(posts[i]);
+              console.log(posts[i]);
+            }
+          },
+        });
+      }
+      // 게시글을 테이블 형식으로
+      function make_table(item) {
+        console.log(item);
+        let htmlTemp = `<tr onclick="location.href='/detail?postId=${item["postId"]}'">       
+                <td>${item["nickname"]}</td>
+                <td>${item["date"]}</td> 
+                <td>${item["img_url"]}</td>
+                <td>${item["title"]}</td>
+                <td>${item["area"]}</td>
+                <td>추가하자</td>
+                </tr>`;
+        $("#postList").append(htmlTemp);
+      }
+
     </script>
   </head>
   <body>
     <div id="temp">
-     <!-- id 환영인사-->
+
+
+      <!-- id 환영인사-->
     </div>
     <button onclick="logout()">로그아웃</button>
+    <table>
+      <thead>
+        <tr>
+          <th>작성자</th>
+          <th>작성일</th>
+          <th>이미지</th>
+          <th>제목</th>
+          <th>지역구</th>
+          <th>댓글수</th>
+        </tr>
+      </thead>
+      <tbody id="postList">
+        <!-- 게시글 들어가는 곳-->
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
   </body>
 </html>
