@@ -4,6 +4,7 @@ const Users = require("../models/users");
 module.exports = (req, res, next) => {
   console.log("미들웨어를 지나가유");
   const { authorization } = req.headers;
+  console.log(authorization);
   const [tokenType, tokenValue] = authorization.split(" ");
   // console.log(tokenValue);
 
