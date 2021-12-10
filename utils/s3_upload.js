@@ -11,7 +11,7 @@ console.log("s3 config.js 호출")
 
 const uploadParams = {
     Bucket: env.Bucket,
-    Key: '', // pass key
+    Key: "", // pass key // (req, file, cb) => {  cb(null, file.originalname)}
     Body: null, // pass file body
 };
 
