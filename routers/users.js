@@ -1,13 +1,17 @@
 const express = require("express");
+const bcrypt = require("bcrypt")
 const Users = require("../models/users"); // 스키마에서 모델을 가져옴
 const router = express.Router();
 const jwt = require("jsonwebtoken"); // token 호출
+
 const authMiddleware = require("../middlewares/auth-middleware"); // 미들웨어 호출
 
 // 회원가입
 router.post("/sign-up", async (req, res) => {
   try {
     const { id, password, password_confirm, nickname } = req.body;
+    const hashed = bcrypt.hashSync(password, 10)
+    const hashed_password = hashed
 
     // 아이디는 `최소 3자 이상, 알파벳 대소문자(a~z, A~Z), 숫자(0~9)`로 구성
     let chkId = id.search(/^[A-za-z0-9]{3,15}$/g);
@@ -53,7 +57,7 @@ router.post("/sign-up", async (req, res) => {
     /* 닉네임은 아직 유효성/중복체크 진행안함 */
 
     // 회원가입 정보를 db에 저장
-    const users = new Users({ id, password, nickname });
+    const users = new Users({ id, hashed_password, nickname });
     await users.save();
 
     res.status(201).send({ result: "success" });
