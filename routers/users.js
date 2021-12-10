@@ -7,7 +7,7 @@ const authMiddleware = require("../middlewares/auth-middleware"); // 미들웨�
 // 회원가입
 router.post("/sign-up", async (req, res) => {
   try {
-    const { id, password, nickname } = req.body;
+    const { id, password, password_confirm, nickname } = req.body;
 
     // 아이디는 `최소 3자 이상, 알파벳 대소문자(a~z, A~Z), 숫자(0~9)`로 구성
     let chkId = id.search(/^[A-za-z0-9]{3,15}$/g);
@@ -40,6 +40,14 @@ router.post("/sign-up", async (req, res) => {
           "패스워드는 최소 4자 이상이며, 아이디와 같은 값은 포함될 수 없습니다.",
       });
       return;
+    }
+
+    // 패스워드 불일치(입력, 재입력 칸)
+    if (password !== password_confirm) {
+      res.status(400).send({
+        errorMessage: "패스워드가 패스워드 확인란과 동일하지 않습니다.",
+      });
+      return; 
     }
 
     /* 닉네임은 아직 유효성/중복체크 진행안함 */
