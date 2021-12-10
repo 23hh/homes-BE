@@ -3,6 +3,7 @@ const Posts = require("../models/posts"); // 스키마에서 모델을 가져옴
 const authMiddleware = require("../middlewares/auth-middleware");
 const router = express.Router();
 
+
 const env = require("../config/s3_env");
 var aws = require("aws-sdk");
 var multer = require("multer");
@@ -14,6 +15,7 @@ var s3 = new aws.S3({
   region: env.REGION,
 });
 
+
 var upload = multer({
   storage: multerS3({
     s3: s3,
@@ -22,6 +24,7 @@ var upload = multer({
       cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
+
       cb(null, `test/${Date.now()}_${file.originalname}`);
     },
   }),
@@ -59,6 +62,7 @@ router.post(
     res.send({ result: "success" });
   }
 );
+
 
 // 게시물조회
 router.get("/posts", async (req, res, next) => {
