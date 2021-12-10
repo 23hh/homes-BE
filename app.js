@@ -8,6 +8,16 @@ const postRouter = require("./routers/posts");
 const commentRouter = require("./routers/comments");
 
 app.use(cors());
+
+// const corsOptions = {
+//   origin: "*", //전체 허용
+//   methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
+//   preflightContinue: false,
+//   credentials: true,
+//   // optionsSuccessStatus: 204,
+// };
+// app.use(cors(corsOptions));
+// const indexRouter = requir
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.set("views", __dirname + "/views");

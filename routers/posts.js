@@ -3,16 +3,18 @@ const Posts = require("../models/posts"); // 스키마에서 모델을 가져옴
 const authMiddleware = require("../middlewares/auth-middleware");
 const router = express.Router();
 
-const env = require('../config/s3_env');
-var aws = require('aws-sdk')
-var multer = require('multer')
-var multerS3 = require('multer-s3')
 
-var s3 = new aws.S3({ 
+const env = require("../config/s3_env");
+var aws = require("aws-sdk");
+var multer = require("multer");
+var multerS3 = require("multer-s3");
+
+var s3 = new aws.S3({
   accessKeyId: env.AWS_ACCESS_KEY,
   secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
-  region: env.REGION
- })
+  region: env.REGION,
+});
+
 
 var upload = multer({
   storage: multerS3({
@@ -22,38 +24,45 @@ var upload = multer({
       cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
-      cb(null, `test/${Date.now()}_${file.originalname}`)
-    }
-  })
-})
+
+      cb(null, `test/${Date.now()}_${file.originalname}`);
+    },
+  }),
+});
 
 // 게시글 및 이미지 s3 등록 처리
-router.post('/posts', authMiddleware, upload.single('file'), async (req, res) => {
-  console.log(req.file);
+router.post(
+  "/posts",
+  authMiddleware,
+  upload.single("file"),
+  async (req, res) => {
+    console.log(req.file);
 
-  const { title, content, area, date } = await req.body;
-  const nickname = res.locals.users.nickname;
-  const userId = res.locals.users.userId;
-  const id = res.locals.users.id;
+    const { title, content, area, date } = await req.body;
+    const nickname = res.locals.users.nickname;
+    const userId = res.locals.users.userId;
+    const id = res.locals.users.id;
 
-  // let image_name = req.file.originalname;
-  let img_url = req.file.location;
-  console.log("img_url: " + img_url);
+    // let image_name = req.file.originalname;
+    let img_url = req.file.location;
+    console.log("img_url: " + img_url);
 
-  Posts.create({ // await 있으면 에러나서 우선 떼어둠
-    nickname,
-    userId,
-    id,
-    img_url,
-    title,
-    area,
-    content,
-    date,
-  });
+    Posts.create({
+      // await 있으면 에러나서 우선 떼어둠
+      nickname,
+      userId,
+      id,
+      img_url,
+      title,
+      area,
+      content,
+      date,
+    });
 
-  res.send({ result: "success" });
+    res.send({ result: "success" });
+  }
+);
 
-});
 
 // 게시물조회
 router.get("/posts", async (req, res, next) => {
