@@ -2,16 +2,18 @@
 
 워크스테이션 : https://www.notion.so/show-me-homes/3-09d2ce7133a249b18e96397816ecb82c<br>
 노션 뷰 : https://show-me-homes.notion.site/show-me-homes/3-09d2ce7133a249b18e96397816ecb82c <br>
-aa
 
-# 보 여 줘 홈 즈 🏠
+
+# 보 여 줘 홈 즈 🏡
 ---
 
 # 1. 프로젝트 개요
 
 ## 1) 프로젝트 주제
 
-
+이사가야하는데, 지금 살던 집의 계약기간이 남았다면?!
+주저하지 말고 보여주세요!!🏡
+주택 거래와 양도를 위한 커뮤니티 사이트 👉 보. 여. 줘. 홈. 즈
 
 
 ## 2) 팀원소개🧙‍♂️
@@ -41,14 +43,16 @@ aa
 # 2. 개발환경
 
 ## 1) BACK-END
-<img src="https://img.shields.io/badge/Node.js-3766AB?style=flat&logo=Python&logoColor=white"/></a>&nbsp;&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/node.js-339933?style=flat&logo=Node.js&logoColor=white"/></a>&nbsp;&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/mongoDB-47A248?style=flat&logo=MongoDB&logoColor=white"/></a>&nbsp;&nbsp;&nbsp;
-<img src="https://img.shields.io/badge/Express-000000?style=flat&logo=Flask&logoColor=white"/></a>&nbsp;&nbsp;&nbsp;
-
+<img src="https://img.shields.io/badge/express-000000?style=flat&logo=express&logoColor=white"/></a>&nbsp;&nbsp;&nbsp;
 
 ## 2) DEPLOY
 <img src="https://img.shields.io/badge/AWS EC2 (Ubuntu 18.04 LTS)-232F3E?style=flat&logo=Amazon AWS&logoColor=white"/></a>&nbsp;&nbsp;&nbsp;
 
+## 3) Version Control
+<img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"></a>&nbsp;&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/git-F05032?style=flat&logo=git&logoColor=white"></a>&nbsp;&nbsp;&nbsp;
 ---
 
 # 3. 핵심기능
