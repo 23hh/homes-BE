@@ -32,7 +32,7 @@
 
 🧑🏻‍💻 윤석준
 
-<img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"👉</a>&nbsp;&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"></a> 👉 &nbsp;&nbsp;&nbsp;
 https://github.com/Taeeon-kim/findhomes
 
 ## 3) 스케줄링📆
