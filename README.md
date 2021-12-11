@@ -77,4 +77,4 @@
 
 # 4. 데모영상
 
-- 📺  **Our Youtube link ->**  [![Youtube Badge](https://img.shields.io/badge/Youtube-ff0000?style=flat&logo=youtube&link=https://youtu.be/2tgA8FhfZqY)]   
+- 📺  **Our Youtube link ->**  [![Youtube Badge](https://img.shields.io/badge/Youtube-ff0000?style=flat&logo=youtube&link=https://youtu.be/2tgA8FhfZqY)](https://www.youtube.com/watch?v=AKAIshuerYk)   
