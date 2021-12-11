@@ -21,18 +21,18 @@
 5인 1조 팀프로젝트 (백엔드: 3명, 프론트엔드: 2명)
 
 [BACK-END]
-🧑🏻‍💻 김형진: 프로젝트 셋팅 및 배포(GIT), 댓글 CRUD, AWS 업로드
+🧑🏻‍💻 김형진: 프로젝트 셋팅 및 배포(GIT), 댓글 CRUD 구현, AWS 업로드
 
-🧑🏻‍💻 배은지: 로그인, 회원가입, 인증, 이미지 파일 등록(s3)
+🧑🏻‍💻 배은지: 로그인, 회원가입, 인증, 이미지 파일 등록(s3) 구현
 
-🧑🏻‍💻 이상협: 게시글 CRUD, 이미지 파일 수정(s3), 비밀번호 암호화
+🧑🏻‍💻 이상협: 게시글 CRUD, 이미지 파일 수정(s3), 비밀번호 암호화 구현
 
 [FRONT-END]
 🧑🏻‍💻 김태언
 
 🧑🏻‍💻 윤석준
 
-<img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white">👇</a>&nbsp;&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/github-181717?style=flat&logo=github&logoColor=white"👉</a>&nbsp;&nbsp;&nbsp;
 https://github.com/Taeeon-kim/findhomes
 
 ## 3) 스케줄링📆
