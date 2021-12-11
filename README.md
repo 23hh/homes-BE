@@ -3,3 +3,74 @@
 워크스테이션 : https://www.notion.so/show-me-homes/3-09d2ce7133a249b18e96397816ecb82c<br>
 노션 뷰 : https://show-me-homes.notion.site/show-me-homes/3-09d2ce7133a249b18e96397816ecb82c <br>
 aa
+
+# 보 여 줘 홈 즈 🏠
+---
+
+# 1. 프로젝트 개요
+
+## 1) 프로젝트 주제
+
+
+
+
+## 2) 팀원소개🧙‍♂️
+
+5인 1조 팀프로젝트 (백엔드: 3명, 프론트엔드: 2명)
+
+🧑🏻‍💻 김형진: 댓글 CRUD, AWS 업로드
+
+🧑🏻‍💻 배은지: 로그인, 회원가입, 인증, 이미지 파일 등록(s3)
+
+🧑🏻‍💻 이상협: 게시글 CRUD, 이미지 파일 수정(s3), 비밀번호 암호화
+
+
+## 3) 스케줄링📆
+
+2021년 12월 6일 ~ 2021년 12월 11일
+
+- 12월 6일 월: 프로젝트 주제선정, 와이드프레임 작성 및 API 설계
+- 12월 7일 화: DB선정, 로그인, 회원가입 구현
+- 12월 8일 수: 게시글 CURD 구현
+- 12월 9일 목: 댓글 CRUD 구현, 1차 배포 
+- 12월 10일 금: 테스트 후 수정 및 2차 배포
+- 12월 11일 토: 프론트와 연결 및 최종 배포
+
+---
+
+# 2. 개발환경
+
+## 1) BACK-END
+<img src="https://img.shields.io/badge/Node.js-3766AB?style=flat&logo=Python&logoColor=white"/></a>&nbsp;&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/mongoDB-47A248?style=flat&logo=MongoDB&logoColor=white"/></a>&nbsp;&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/Express-000000?style=flat&logo=Flask&logoColor=white"/></a>&nbsp;&nbsp;&nbsp;
+
+
+## 2) DEPLOY
+<img src="https://img.shields.io/badge/AWS EC2 (Ubuntu 18.04 LTS)-232F3E?style=flat&logo=Amazon AWS&logoColor=white"/></a>&nbsp;&nbsp;&nbsp;
+
+---
+
+# 3. 핵심기능
+
+## 1) 회원가입/로그인
+
+- JWT 인증 방식으로 로그인 구현
+- ID 중복확인, 각 필드별 유효성체크
+- ID를 제외한 개인정보 수정 기능
+
+## 2) 게시글 CRUD
+
+- 게시글 목록 조회, 상세조회, 등록, 수정, 삭제
+- 이미지 조회 등록, 수정, 삭제
+
+
+## 3) 댓글 CRUD
+
+- 댓글 조회, 수정, 삭제
+
+---
+
+# 4. 데모영상
+
+- 📺  **Our Youtube link ->**  [![Youtube Badge](https://img.shields.io/badge/Youtube-ff0000?style=flat&logo=youtube&link=https://youtu.be/2tgA8FhfZqY)]   
